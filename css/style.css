@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 1em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', sans-serif;
+    /* background: #e4e4e4 ; */
+}
+/*
+-- Menu --
+*/
+a {
+    text-decoration: none;
+    margin-top: 5px;
+}
+
+a:link, a:visited {
+    color: #fff;
+    border-radius: 5px;
+    padding: 15px;;
+}
+
+a:hover {
+    color: #f7b600;
+    background: #fff;
+}
+
+
+
+/*
+-- Layout --
+*/
+
+#area-cabecalho {
+    background-color: #f7b600;
+    padding: 15px;
+    text-align: center;    
+}
+
+#area-logo, #area-menu  {
+    padding: 10px;
+}
+
+#area-principal {    
+    width: 900px;
+    margin: 0 auto;
+}
+#area-postagens {
+    margin-top: 20px;;
+}
+
+#rodape {
+    margin-top: 50px;;
+    clear: both;
+    text-align: center;
+    padding: 15px;
+    background: #CCC;
+}
+
+/*
+-- Formatação geral --
+*/
+
+h1 {
+    color: #4e4e4e;
+    font-size: 2.5em;
+
+}
+
+.branco {
+    color: white;
+}
+
+
+/* Form despesa */
+form {
+    padding: 1em;
+    border: 1px solid #c1c1c1;
+    margin-top: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+}
+
+form input {
+    margin-bottom: 1rem;    
+    border: 1px solid #9c9c9c;
+}
+
+form button {    
+    background-color: #f7b600;
+}
+    
+label {
+    text-align: left;
+    display: block;
+    padding: 0.5em 1.5em 0.5em 0;
+}
+  
+input {
+    width: 100%;
+    padding: 0.7em;
+    margin-bottom: 0.5rem;
+}
+
+input:focus {
+   outline: 3px solid gold;
+}
+  
+#cadastrar-despesa {
+    color: #fff;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: #f7b600;
+}
