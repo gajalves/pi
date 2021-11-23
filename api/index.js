@@ -1,49 +1,78 @@
 const express = require('express');
+const conexao = require('./config/dbconfig');
+const Tabelas = require('./infra/tabela');
+
+conexao.connect(erro => {
+    if(erro) {
+        console.log('deu ruim a conexao');
+    }
+    else {
+        console.log('deu bom a conexao');
+
+        //Verifica e cria tabela
+        Tabelas.init(conexao)
+            
+        //Inicia servidor da api 
+        const server = express();
+        
+        //Rotas de despesas
+        const rotasDespesas = require('./routes/despesasRotas');
+        server.use(rotasDespesas);
 
 
-const server = express();
-server.use(express.json())
+        server.listen(3000, () => console.log('Servidor rodando...'));                        
 
-//Temp db
-const nomes = ['Gabriel', 'Ariane', 'Gustavo', 'Luana', 'Amanda', 'Jovs', 'Bruna', 'Ana Claudia'];
+        
+
+        
+    }
+})
+
 
 //Get by id
-server.get('/nomes/:index', (req, res) => {
-    const { index } = req.params;
+// server.get('/nomes/:index', (req, res) => {
+//     const { index } = req.params;
 
-    return res.json(nomes[index]);
-})
+//     return res.json(nomes[index]);
+// })
 
-//Get all
-server.get('/nomes', (req, res) => {
-    return res.json(nomes);
-})
 
-//Post 
-server.post('/nomes', (req, res) => {
-    const { nome } = req.body;
-    nomes.push(nome);
-    return res.json(nomes);
-})
+//Get by id
+// server.get('/nomes/:index', (req, res) => {
+//     const { index } = req.params;
 
-//Put 
-server.put('/nomes/:index', (req, res) => {
-    const { index } = req.params;
-    const { nome } = req.body;
+//     return res.json(nomes[index]);
+// })
 
-    nomes[index] = nome;
+// //Get all
+// server.get('/nomes', (req, res) => {
+//     return res.json(nomes);
+// })
 
-    return res.json(nomes);
-})
+// //Post 
+// server.post('/nomes', (req, res) => {
+//     const { nome } = req.body;
+//     nomes.push(nome);
+//     return res.json(nomes);
+// })
 
-//Put 
-server.delete('/nomes/:index', (req, res) => {
-    const { index } = req.params;
+// //Put 
+// server.put('/nomes/:index', (req, res) => {
+//     const { index } = req.params;
+//     const { nome } = req.body;
+
+//     nomes[index] = nome;
+
+//     return res.json(nomes);
+// })
+
+// //Put 
+// server.delete('/nomes/:index', (req, res) => {
+//     const { index } = req.params;
     
-    nomes.splice(index, 1);
+//     nomes.splice(index, 1);
             
-    return res.json( {message: "Nome removido com sucesso! "} );
-})
+//     return res.json( {message: "Nome removido com sucesso! "} );
+// })
 
 
-server.listen(3000, () => console.log('Servidor rodando...'));
