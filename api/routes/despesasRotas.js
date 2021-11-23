@@ -1,10 +1,6 @@
-const express = require('express');
-const router = express.Router();
+const {Despesa} = require('../controllers/despesaController')
 
-const despesaController = require('../controllers/despesaController');
+module.exports = server => {        
+    server.get('/buscarDespesas', (req, res) => res.send('send...'));
+}
 
-//Get all
-router.get('/buscarDespesas', despesaController.buscarDespesa(req,res));
-
-
-module.exports = router

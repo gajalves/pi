@@ -1,32 +1,29 @@
-const express = require('express');
+const customExpress = require('./config/customExpress');
 const conexao = require('./config/dbconfig');
 const Tabelas = require('./infra/tabela');
 
-conexao.connect(erro => {
-    if(erro) {
-        console.log('deu ruim a conexao');
-    }
-    else {
-        console.log('deu bom a conexao');
+const server = customExpress();
 
-        //Verifica e cria tabela
-        Tabelas.init(conexao)
+server.listen(3000, () => console.log('Servidor rodando...'));
+
+// conexao.connect(erro => {
+//     if(erro) {
+//         console.log('deu ruim a conexao');
+//     }
+//     else {
+//         console.log('deu bom a conexao');
+
+//         //Verifica e cria tabela
+//         Tabelas.init(conexao)
             
-        //Inicia servidor da api 
-        const server = express();
+//         //Inicia servidor da api 
         
-        //Rotas de despesas
-        const rotasDespesas = require('./routes/despesasRotas');
-        server.use(rotasDespesas);
-
-
-        server.listen(3000, () => console.log('Servidor rodando...'));                        
-
         
-
-        
-    }
-})
+//         //Rotas de despesas
+//         const rotasDespesas = require('./routes/despesasRotas');
+//         server.use(rotasDespesas);
+//     }
+// })
 
 
 //Get by id

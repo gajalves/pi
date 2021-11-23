@@ -2,10 +2,8 @@ const conexao = require('../config/dbconfig')
 
 class Despesa {
 
-    buscarDespesa = function(req, res) {
-        res.send('buscando....');
-        
-    }
+    buscarDespesa () {}
+            
         
     buscarPorDescricao() {
     
@@ -13,8 +11,6 @@ class Despesa {
     
     criarDespesa(novaDespesa, resultado) {
         const sql = 'INSERT INTO despesas()'
-
-
         conexao.query(sql, novaDespesa, (erro, result) => {
             if(erro) {
                 console.log(erro);
