@@ -3,11 +3,15 @@ const DespesaModel = require('../models/despesaModel')
 class DespesaController {
     
     buscarDespesas(req, res) {
-        DespesaModel.buscarDespesa(req, res);
+        const retBuscaDespesa = DespesaModel.buscarDespesa(req, res)
+        .then(result => res.send(result)
+        .catch(res.sendStatus(500)));                
     }
 
     criarDespesa(req, res) {
-        DespesaModel.criarDespesa(req, res);
+        const retCriaDespesa = DespesaModel.criarDespesa(req, res)
+        .then(result => res.send(result))
+        .catch();
     }
 
     removerDespesa(req, res) {
