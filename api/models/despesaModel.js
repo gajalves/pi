@@ -2,7 +2,7 @@ const conexao = require('../config/dbconfig')
 
 class Despesa {
 
-    buscarDespesa(req, res) {        
+    async buscarDespesa(req, res) {        
         const sql = 'SELECT * FROM despesas';
                 
         return new Promise((resolve, reject) => {
@@ -17,7 +17,23 @@ class Despesa {
         })
                         
     }
-                            
+     
+    async buscarDespesaPorId(req, res) {        
+        const sql = 'SELECT * FROM despesas WHERE id = ' + req.params.id;
+                
+        return new Promise((resolve, reject) => {
+            conexao.query(sql, (erro, result ) => {
+                if(erro) {                
+                    reject()
+                }
+                else {                    
+                    resolve(result);
+                }
+            })
+        })
+                        
+    }
+
     criarDespesa(req, res) {
 
         let resposta;
@@ -49,14 +65,22 @@ class Despesa {
         }        
     }
     
-    removerDespesa(req, res) {
-        res.send('removendo despesas....');
+    async removerDespesa(req, res) {
+        let buscaDespesa;
+
+        if(req.params.id) {
+            await this.buscarDespesaPorId(req, res)
+            .then(result => buscaDespesa = result)
+        }                
+
+        return buscaDespesa;
     }        
 
     atualizarDespesa(req, res) {
-        res.send('atualizando despesas....');
-    }
-    
+        if(req.params.id) {
+            
+        }
+    }    
 }
 
 module.exports = new Despesa;

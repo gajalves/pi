@@ -4,8 +4,14 @@ class DespesaController {
     
     buscarDespesas(req, res) {
         const retBuscaDespesa = DespesaModel.buscarDespesa(req, res)
-        .then(result => res.send(result)
-        .catch(res.sendStatus(500)));                
+        .then(result => res.send(result))
+        .catch();
+    }
+
+    buscarDespesasPorId(req, res) {
+        const retBuscaDespesaPorId = DespesaModel.buscarDespesaPorId(req, res)
+        .then(result => res.send(result))
+        .catch();
     }
 
     criarDespesa(req, res) {
@@ -15,11 +21,16 @@ class DespesaController {
     }
 
     removerDespesa(req, res) {
-        DespesaModel.removerDespesa(req, res);
+        console.log(req.params.id)
+        DespesaModel.removerDespesa(req, res)
+        .then(result => res.send(result))
+        .catch();
     }
 
-    atualizarDespesa(req, res) {
-        DespesaModel.atualizarDespesa(req, res);
+    atualizarDespesa(req, res) {        
+        const retAtualizaDespesa = DespesaModel.atualizarDespesa(req, res)
+        .then(result => res.send(result))
+        .catch();
     }
 }
 
