@@ -28,7 +28,7 @@ class DespesaController {
     }
 
     atualizarDespesa(req, res) {        
-        const retAtualizaDespesa = DespesaModel.atualizarDespesa(req, res)
+        DespesaModel.atualizarDespesa(req, res)
         .then(result => res.send(result))
         .catch();
     }

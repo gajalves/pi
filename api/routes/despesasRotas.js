@@ -7,7 +7,7 @@ module.exports = server => {
 
     server.post('/despesa', (req, res) => DespesaController.criarDespesa(req, res));
 
-    server.put('/despesa', (req, res) => DespesaController.atualizarDespesa(req, res));
+    server.put('/despesa/:id', (req, res) => DespesaController.atualizarDespesa(req, res));
 
     server.delete('/despesa/:id', (req, res) => DespesaController.removerDespesa(req, res));
 }

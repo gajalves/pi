@@ -73,12 +73,29 @@ class Despesa {
             .then(result => buscaDespesa = result)
         }                
 
-        return buscaDespesa;
+        if(buscaDespesa.length == 0){
+            return res.status(404).json({
+                Mensagem: "Despesa nao encontrada"
+            })
+        } else {
+            //Remove
+        }
     }        
 
-    atualizarDespesa(req, res) {
+    async atualizarDespesa(req, res) {
+        let buscaDespesa;
+
         if(req.params.id) {
-            
+            await this.buscarDespesaPorId(req, res)
+            .then(result => buscaDespesa = result)
+        }                
+
+        if(buscaDespesa.length == 0){
+            return res.status(404).json({
+                Mensagem: "Despesa nao encontrada"
+            })
+        } else {
+            //Atualiza
         }
     }    
 }
