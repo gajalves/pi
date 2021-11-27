@@ -5,8 +5,8 @@ const Conexao = mysql.createConnection({
     port: 3306,
     user: 'root',
     password: 'root',
-    //database: 'pi-trabalho'
-    database: 'testdb'
+    database: 'pi-trabalho'
+    //database: 'testdb'
 })
 
 

@@ -34,7 +34,7 @@ class Despesa {
                         
     }
 
-    criarDespesa(req, res) {
+    async criarDespesa(req, res) {
 
         let resposta;
 
@@ -54,9 +54,9 @@ class Despesa {
                         console.log(erro);
                     }
                     else {      
-                        resposta = "Despesa criada com sucesso";
-                        
-                        resolve(resposta);
+                        res.status(201).json({
+                            Mensagem: "Despesa criada com sucesso"
+                        })                        
                     }
                 })
             })
@@ -79,6 +79,20 @@ class Despesa {
             })
         } else {
             //Remove
+            const sql = "DELETE FROM despesas WHERE id = " + req.params.id;
+
+            return new Promise((resolve, reject) => {
+                conexao.query(sql, (erro, result ) => {
+                    if(erro) {                
+                        console.log(erro);
+                    }
+                    else {                                                      
+                        res.status(200).json({
+                            Mensagem: "Despesa removida com sucesso"
+                        })
+                    }
+                })
+            })
         }
     }        
 
@@ -96,6 +110,38 @@ class Despesa {
             })
         } else {
             //Atualiza
+            const { dtdespesa } = req.body;
+            const { categoria } = req.body;
+            const { descricao } = req.body;
+            const { valor } = req.body;
+            const { situacao } = req.body;
+
+
+            if(dtdespesa && categoria && descricao && valor && situacao) {
+                const sql = 'UPDATE despesas SET dtdespesa = "'+ dtdespesa + '", ' +
+                            '                    categoria = "'+ categoria + '", ' +
+                            '                    descricao = "'+ descricao + '", ' +
+                            '                    valor = '+ valor + ', ' +
+                            '                    situacao = "'+ situacao + '"' +
+                            'WHERE id = ' + req.params.id;                
+                console.log(sql)
+                return new Promise((resolve, reject) => {
+                    conexao.query(sql, (erro, result ) => {
+                        if(erro) {                
+                            console.log(erro);
+                        }
+                        else {      
+                            res.status(200).json({
+                                Mensagem: "Despesa atulizada com sucesso"
+                            })                        
+                        }
+                    })
+                })
+            } else {
+                res.status(400).json({
+                    Mensagem: "Verificar campos do json"
+                });
+            }
         }
     }    
 }
