@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="css/style.css">
+        <title>UFPR Despesas - O seu Gerenciador de Despesas</title>        
+    </head>
+    <body onload="carregaConsulta()">
+        <div id="area-cabecalho">
+            <div id="area-logo">
+                <h1>UFPR<span class="branco">Despesas</span></h1>
+            </div>
+            <div id="area-menu">
+                <a href="C:\Users\gajal\OneDrive\Documentos\Curso - Desenvolvimento Web\PI_laverde\pi\index.html">Cadastrar</a>
+                <a href="C:\Users\gajal\OneDrive\Documentos\Curso - Desenvolvimento Web\PI_laverde\pi\consulta.html">Consultar</a>                
+            </div>
+        </div>
+
+        <div id="area-principal">
+            <div id="area-postagens">
+                <table>
+					<thead>
+						<tr>
+                            <th>Data</th>
+							<th>Categoria</th>
+							<th>Descrição</th>
+							<th>Valor</th>
+							<th>Situação</th>
+							<th>Ações</th>
+						</tr>
+					</thead>
+					<tbody id="tabela-despesas">							                        										
+					</tbody>
+				</table>                          
+            </div>                            
+        </div>        
+        <div id="rodape">
+            Todos os direitos reservados
+        </div>
+
+        <!-- Modal de Atualização -->
+        <div id="modalAtualiza" class="modal">
+            
+            <div class="modal-content">
+            <span class="fechar">X</span>
+            <p>
+                <h3>Alterar Despesa</h3>
+                <div>
+                    <form id="form-despesa" action="">
+                        <label for="dtdespesa">Data</label>
+                        <input id="dtdespesa" name="dtdespesa" type="text">
+                    
+                        <label for="tipo" class="last-name">Tipo</label>
+                        <input id="tipo" name="tipo" type="text">
+                    
+                        <label for="descricao">Descrição</label>
+                        <input id="descricao" name="descricao" type="text">
+                    
+                        <label for="valor">Valor</label>
+                        <input id="valor" name="valor" type="text">                                                    
+                                                
+                        <button type='button' class="btnAcoes" id="cadastrar-despesa">Salvar</button> 
+                    </form>
+                </div>
+            </p>
+            </div>
+        
+        </div>
+
+
+    </body>
+    <script src="./js/buscaDespesas.js"></script>
+</html>
