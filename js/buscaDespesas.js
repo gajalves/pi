@@ -1,4 +1,41 @@
 let listaDespesas = [];
+let idDespesaAtual;
+
+let atualizaDespesa = document.getElementById("atualizar-despesa")
+
+atualizaDespesa.addEventListener("click", () => {
+    
+    let despesa = buscaDadosFormulario();    
+
+    let request = new XMLHttpRequest();    
+    request.open("PUT", "http://localhost:3000/despesa/" + idDespesaAtual);
+    request.setRequestHeader("Content-Type", "application/json");
+    request.send(despesa);    
+    request.addEventListener("load", () => {        
+        if(request.status == 200) {
+            alert('Despesa atualizada com sucesso!')
+            document.location.reload(true);
+        }
+        else {
+            alert('Erro ao atualizar despesa')
+        }
+    })
+});
+
+function buscaDadosFormulario() {
+    let dadosFormulario = document.getElementById("form-despesa").elements;
+    
+    
+    let despesa = {
+        "dtdespesa": dadosFormulario.dtdespesa.value,
+        "categoria": dadosFormulario.tipo.value,
+        "descricao": dadosFormulario.descricao.value,
+        "valor": dadosFormulario.valor.value,
+        "situacao": dadosFormulario.situacao.value
+    };
+    
+    return JSON.stringify(despesa);
+}
 
 function carregaConsulta() {
     listaDespesas = [];
@@ -98,12 +135,10 @@ function montatdAcoes(idDespesa) {
     return td;
 }
 
-function atualizarDespesa(idDespesa) {
-    
+function atualizarDespesa(idDespesa) {    
     abreModal();
     populaModal(idDespesa);
-
-    
+    idDespesaAtual = idDespesa;
 }
 
 function abreModal() {
@@ -121,6 +156,7 @@ function abreModal() {
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
+            idDespesaAtual = null;
         }
     }
 }

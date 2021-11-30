@@ -9,8 +9,8 @@
                 <h1>UFPR<span class="branco">Despesas</span></h1>
             </div>
             <div id="area-menu">
-                <a href="C:\Users\gajal\OneDrive\Documentos\Curso - Desenvolvimento Web\PI_laverde\pi\index.html">Cadastrar</a>
-                <a href="C:\Users\gajal\OneDrive\Documentos\Curso - Desenvolvimento Web\PI_laverde\pi\consulta.html">Consultar</a>                
+                <a href="index.html">Cadastrar</a>
+                <a href="consulta.html">Consultar</a>
             </div>
         </div>
 
@@ -31,6 +31,12 @@
                         
                             <label for="valor">Valor</label>
                             <input id="valor" name="valor" type="text">                                                    
+
+                            <label for="situacao">Situação</label>
+                            <select name="situacao" id="situacao">
+                                <option value="PAGO">Pago</option>
+                                <option value="PENDENTE">Pendente</option>                                
+                            </select>
                                                     
                             <button type='button' class="btnAcoes" id="cadastrar-despesa">Salvar</button> 
                         </form>

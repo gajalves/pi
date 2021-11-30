@@ -28,7 +28,7 @@ function buscaDadosFormulario() {
         "categoria": dadosFormulario.tipo.value,
         "descricao": dadosFormulario.descricao.value,
         "valor": dadosFormulario.valor.value,
-        "situacao": "PAGO"
+        "situacao": dadosFormulario.situacao.value
     };
     
     return JSON.stringify(despesa);
