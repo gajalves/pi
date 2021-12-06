@@ -3,7 +3,7 @@ const conexao = require('../config/dbconfig')
 class Despesa {
 
     async buscarDespesa(req, res) {        
-        const sql = 'SELECT * FROM despesas';
+        const sql = 'SELECT id, dtdespesa, categoria, descricao, valor, situacao FROM despesas';
                 
         return new Promise((resolve, reject) => {
             conexao.query(sql, (erro, result ) => {
@@ -19,7 +19,7 @@ class Despesa {
     }
      
     async buscarDespesaPorId(req, res) {        
-        const sql = 'SELECT * FROM despesas WHERE id = ' + req.params.id;
+        const sql = 'SELECT id, DATE(dtdespesa), categoria, descricao, valor, situacao FROM despesas WHERE id = ' + req.params.id;
                 
         return new Promise((resolve, reject) => {
             conexao.query(sql, (erro, result ) => {

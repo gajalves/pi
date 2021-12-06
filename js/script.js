@@ -24,12 +24,25 @@ function buscaDadosFormulario() {
     
     
     let despesa = {
-        "dtdespesa": dadosFormulario.dtdespesa.value,
+        "dtdespesa": criaData(dadosFormulario.dtdespesa.value),
         "categoria": dadosFormulario.tipo.value,
         "descricao": dadosFormulario.descricao.value,
-        "valor": dadosFormulario.valor.value,
+        "valor": dadosFormulario.valor.value.replace(",","."),
         "situacao": dadosFormulario.situacao.value
     };
     
     return JSON.stringify(despesa);
+}
+
+
+function criaData(data) {
+    let retornaData;
+
+    let ano = (data.split('/')[2]);
+    let mes = (data.split('/')[1]);
+    let dia = (data.split('/')[0]);
+
+    retornaData = ano + '-' + mes + '-' + dia
+
+    return retornaData;
 }

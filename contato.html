@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="css/style.css">
+        <title>UFPR Despesas - O seu Gerenciador de Despesas</title>        
+    </head>
+    <body onload="carregaConsulta()">
+        <div id="area-cabecalho">
+            <div id="area-logo">
+                <h1><span class="">UFPR</span><span class="branco">Despesas</span></h1>
+            </div>
+            <div id="area-menu">
+                <a href="index.html">Cadastrar</a>
+                <a href="consulta.html">Consultar</a>
+                <a href="contato.html">Contato</a>
+            </div>
+        </div>
+
+        <div id="area-principal">
+            <div class="container">
+                <form>
+              
+                  <label for="nome">Nome</label>
+                  <input type="text" id="nome" name="nome" placeholder="Matheus Laverde...">
+                                
+                  <label for="email">E-mail</label>
+                  <input type="email" id="email" name="email" placeholder="seuemail@email.com....">
+
+                  <label for="assunto">Assunto</label>
+                  <input type="text" id="assunto" name="assunto" placeholder="">
+              
+                  <label for="texto">Texto</label>
+                  <textarea id="texto-contato" name="texto" placeholder="" style="height:200px"></textarea>
+                                
+                  <button type='button' class="btnAcoes" id="enviar-contato">Enviar</button> 
+              
+                </form>
+              </div>
+        </div>        
+        <div id="rodape">
+            Todos os direitos reservados
+        </div>
+
+       
+
+
+    </body>    
+</html>

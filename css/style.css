@@ -1,12 +1,14 @@
 * {
     margin: 0;
     padding: 0;
+    
+    clear: both;
 }
 
 body {
     font-size: 1em;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', sans-serif;
-    /* background: #e4e4e4 ; */
+    /* background: #e4e4e4 ; */    
 }
 /*
 -- Menu --
@@ -45,15 +47,19 @@ a:hover {
 
 #area-principal {    
     width: 900px;
-    margin: 0 auto;
+    margin: 0 auto;    
+    margin-bottom: 10%;
+    
 }
 #area-postagens {
-    margin-top: 20px;;
+    margin-top: 20px;
+    border-radius: 10px;
 }
 
 #rodape {
-    margin-top: 50px;;
-    clear: both;
+    left: 0;
+    bottom: 0;
+    width: 100%;    
     text-align: center;
     padding: 15px;
     background: #CCC;
@@ -129,7 +135,7 @@ input:focus {
     color: #fff;
     border-radius: 5px;
     padding: 15px;
-    background-color: #94c41c;
+    background-color: #94c41c;    
 }
 
 /* Consulta */
@@ -211,4 +217,18 @@ th{
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+
+
+/* Contato */
+
+#texto-contato, #nome, #email, #assunto {
+    width: 100%; 
+    padding: 12px;
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-sizing: border-box;
+    margin-top: 6px; 
+    margin-bottom: 16px;
+    resize: vertical 
 }

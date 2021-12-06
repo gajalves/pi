@@ -27,10 +27,10 @@ function buscaDadosFormulario() {
     
     
     let despesa = {
-        "dtdespesa": dadosFormulario.dtdespesa.value,
+        "dtdespesa": criaData(dadosFormulario.dtdespesa.value),
         "categoria": dadosFormulario.tipo.value,
         "descricao": dadosFormulario.descricao.value,
-        "valor": dadosFormulario.valor.value,
+        "valor": dadosFormulario.valor.value.replace(",","."),
         "situacao": dadosFormulario.situacao.value
     };
     
@@ -83,7 +83,7 @@ function montatr(despesa){
     let situacaotd =  montatd (despesa.situacao, "situacao");
     let acoestd =  montatdAcoes(despesa.id);
 
-    datatd.textContent = despesa.dtdespesa;
+    datatd.textContent = montaData(despesa.dtdespesa);
     categoriatd.textContent = despesa.categoria;
     descricaotd.textContent = despesa.descricao;
     valortd.textContent = despesa.valor;
@@ -164,7 +164,7 @@ function abreModal() {
 function populaModal(idDespesa) {
     const despesa = listaDespesas.find(despesa => despesa.id === idDespesa);
 
-    document.getElementById('dtdespesa').value = despesa.dtdespesa;
+    document.getElementById('dtdespesa').value = montaData(despesa.dtdespesa);
     document.getElementById('tipo').value = despesa.categoria;
     document.getElementById('descricao').value = despesa.descricao;
     document.getElementById('valor').value = despesa.valor;
@@ -187,4 +187,26 @@ function apagarDespesa(idDespesa) {
         }
     })
 
+}
+
+function montaData(data) {
+
+    let date = new Date(data);
+    let dataFormatada = date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear()
+
+    return dataFormatada;
+}
+
+
+
+function criaData(data) {
+    let retornaData;
+
+    let ano = (data.split('/')[2]);
+    let mes = (data.split('/')[1]);
+    let dia = (data.split('/')[0]);
+
+    retornaData = ano + '-' + mes + '-' + dia
+
+    return retornaData;
 }
